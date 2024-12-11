@@ -61,7 +61,7 @@ p + .DonutList,
   border-bottom: 1px dotted white;
   text-wrap: nowrap;
 
-  font-weight: bold;
+  color: grey;
 }
 
 .DonutList {
