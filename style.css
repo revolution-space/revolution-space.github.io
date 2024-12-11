@@ -10,6 +10,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  font-family: sans-serif;
+  font-size: 18px;
+  color: var(--white);
 }
 
 html {
@@ -25,9 +29,9 @@ body {
 }
 
 p + p,
-p + ul,
-ul + p {
-  margin-top: 16px;
+p + .DonutList,
+.DonutList + p {
+  margin-top: 32px;
 }
 
 .Section {
@@ -72,6 +76,10 @@ ul + p {
     color: inherit;
     text-decoration: inherit;
     color: blue;
+  }
+
+  .DonutList li {
+    margin-top: 18px;
   }
 
 .a-hue-color-anim {
