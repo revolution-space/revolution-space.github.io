@@ -1,0 +1,99 @@
+:root {
+  --black: #171717;
+  --white: #e0e0e0;
+
+  --page-pad: 64px;
+  --page-pad-v: 48px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--black);
+
+  font-family: sans-serif;
+  font-size: 18px;
+  color: var(--white);
+}
+
+body {
+  padding: 0 var(--page-pad);
+}
+
+p + p,
+p + ul,
+ul + p {
+  margin-top: 16px;
+}
+
+.Section {
+  min-width: 100%;
+  min-height: 100%;
+
+  padding: var(--page-pad-v) 0;
+}
+
+.Content {
+  max-width: 800px;
+}
+
+.Intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+  .Intro img {
+    max-width: 80vw;
+    max-height: 80vh;
+  }
+
+.Copyable,
+.CopyableHelp {
+  border-bottom: 1px dotted white;
+  text-wrap: nowrap;
+
+  font-weight: bold;
+}
+
+.DonutList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  font-size: 18px;
+}
+
+  .DonutList a {
+    color: inherit;
+    text-decoration: inherit;
+    color: blue;
+  }
+
+.a-hue-color-anim {
+  animation: 10s k-hue-color-anim infinite linear;
+}
+
+.a-copy {
+  animation:
+    .3s k-invert-there-and-back infinite linear;
+}
+
+footer {
+  align-items: flex-end;
+}
+
+@keyframes k-hue-color-anim {
+  from { filter: hue-rotate(0); }
+  to { filter: hue-rotate(360deg); }
+}
+
+@keyframes k-invert-there-and-back {
+  0% { filter: invert(0); }
+  50% { filter: invert(1) }
+  100% { filter: invert(0) }
+}
