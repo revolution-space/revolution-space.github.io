@@ -1,6 +1,97 @@
 <html>
-<head></head>
+<head>
+  <title>Revolution Space</title>
+  <link rel="stylesheet" href="./style.css">
+  <!-- i know you -->
+</head>
 <body>
-revolution is here!
+
+<header class="Section Intro">
+  <img src="./assets/r2-logo.white.pad.png" alt="">
+</header>
+<!-- peow! -->
+<!-- peow! -->
+<!-- peow! -->
+<!-- peow! -->
+<!-- peow! -->
+<section class="Section Content Donut">
+  <p>You can support us with any donation, from $1 to infinity. We’ll be immensely grateful, and every time we release music or video projects, we’ll acknowledge you as someone who helped us this month. <br><span class="CopyableHelp">... click to copy</span></p>
+  <ul class="DonutList">
+    <li>
+      TBC bank: <span class="Copyable">GE37TB7703445064400004</span> <span class="Copyable">Oleg Goidenko</span>
+    </li>
+    <li>
+      Bank of Georgia: <span class="Copyable">GE62BG0000000533463319</span> <span class="Copyable">Vlad Pavlov</span>
+    </li>
+    <li>
+      <a class="a-hue-color-anim" href="https://www.patreon.com/RevolutionSpace">patreon.com/RevolutionSpace</a>
+    </li>
+    <li>
+      BTC: <span class="Copyable">bc1qmatqk4hzr4vy98p5q6gkgvlawyycwsr80pwlpn</span>
+    </li>
+    <li>
+      ETH: <span class="Copyable">0x040D53E41d0E4806FA0cAb27d7353677bb952c7c</span>
+    </li>
+    <li>
+      ... any coin - ask on the bar 🙏
+    </li>
+  </ul>
+  <br>
+  <br>
+  <p>You could also get our merch for your donation:</p>
+  <ul class="DonutList">
+    <li>Handmade painted T-shirt — $140</li>
+    <li>Printed T-shirt — $85</li>
+  </ul>
+</section>
+<!-- peow! -->
+<!-- peow! -->
+<!-- peow! -->
+<!-- peow! -->
+
+<script>
+function copyToClipboard (str) {
+  const el = document.createElement('textarea');
+  el.value = str;
+  el.setAttribute('readonly', '');
+  el.style.position = 'absolute';
+  el.style.left = '-9999px';
+  document.body.appendChild(el);
+  const selected = document.getSelection().rangeCount > 0
+    ? document.getSelection().getRangeAt(0)
+    : false;
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+  if (selected) {
+    document.getSelection().removeAllRanges();
+    document.getSelection().addRange(selected);
+  }
+  return true;
+};
+
+function playCopyAnimation () {
+  document.documentElement.classList.add('a-copy');
+  setTimeout(() => {
+    document.documentElement.classList.remove('a-copy');
+  }, .3e3);
+}
+
+const $copyables = [ ...document.querySelectorAll('.Copyable') ];
+$copyables.forEach($el => $el.addEventListener('click', e => {
+  copyToClipboard($el.textContent);
+  playCopyAnimation();
+}));
+</script>
+
 </body>
+
+<!-- peow! -->
+<!-- peow! -->
+<!-- peow! -->
+<footer class="Section">
+  See you on the stage 🥰
+</footer>
+
+<!-- PEOW! --><!-- PEOW! --><!-- PEOW! --><!-- PEOW! --><!-- LOVE YOU! --><!-- PEOW! -->
 </html>
