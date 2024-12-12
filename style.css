@@ -25,7 +25,8 @@ html {
 }
 
 body {
-  padding: 0 var(--page-pad);
+/*  padding: 0 var(--page-pad);*/
+/*  width: 100%;*/
 }
 
 p + p,
@@ -38,17 +39,22 @@ p + .DonutList,
   min-width: 100%;
   min-height: 100%;
 
-  padding: var(--page-pad-v) 0;
+  overflow-x: hidden;
+
 }
 
 .Content {
   max-width: 800px;
+  padding: var(--page-pad-v);
 }
 
 .Intro {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  max-height: 80%;
+  min-height: 80%;
 }
 
   .Intro img {
