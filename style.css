@@ -22,11 +22,14 @@ html {
   font-family: sans-serif;
   font-size: 18px;
   color: var(--white);
+
+  overflow-x: hidden;
 }
 
 body {
 /*  padding: 0 var(--page-pad);*/
 /*  width: 100%;*/
+  overflow-x: hidden;
 }
 
 p + p,
@@ -49,12 +52,16 @@ p + .DonutList,
 }
 
 .Intro {
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
   /*max-height: 80%;
   min-height: 80%;*/
+  overflow: hidden;
+  width: 100%;
 }
 
   .Intro img {
