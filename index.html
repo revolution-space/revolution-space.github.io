@@ -10,12 +10,24 @@
 
 <header class="Section Intro">
   <img src="./assets/r2-logo.white.pad.png" alt="">
+  <video autoplay loop muted playsinline class="video-background">
+    <source src="./assets/R-smoke.1.mov.mp4" type="video/mp4">
+  </video>
 </header>
 <!-- peow! -->
 <!-- peow! -->
 <!-- peow! -->
 <!-- peow! -->
 <!-- peow! -->
+
+<section class="Content">
+  <!-- Elfsight Instagram Feed | Untitled Instagram Feed -->
+  <!-- <script src="https://static.elfsight.com/platform/platform.js" async></script> -->
+  <div class="elfsight-app-39d05746-91ff-4c41-b35d-edfe63f065bb" data-elfsight-app-lazy>
+    <!-- Loading events.. -->
+  </div>
+</section>
+
 <section class="Section Content Donut">
   <p>You can support us with any donation, from $1 to infinity. We’ll be immensely grateful, and every time we release music or video projects, we’ll acknowledge you as someone who helped us this month. <br><span class="CopyableHelp">... click to copy</span></p>
   <ul class="DonutList">
@@ -60,6 +72,8 @@
 </footer>
 
 <script>
+function $ (selector) { return document.querySelector(selector); }
+
 function copyToClipboard (str) {
   const el = document.createElement('textarea');
   el.value = str;
@@ -80,6 +94,14 @@ function copyToClipboard (str) {
   return true;
 };
 
+const $video = $('.Intro video');
+const $img = $('.Intro img');
+if ($video)
+  $video.addEventListener('play', e => {
+    $video.style.opacity = 1;
+    $img.style.opacity = 0;
+  });
+
 function playCopyAnimation () {
   document.documentElement.classList.add('a-copy');
   setTimeout(() => {
@@ -92,6 +114,7 @@ $copyables.forEach($el => $el.addEventListener('click', e => {
   copyToClipboard($el.textContent);
   playCopyAnimation();
 }));
+
 </script>
 
 </body>
