@@ -11,7 +11,7 @@
   padding: 0;
   box-sizing: border-box;
 
-  font-family: sans-serif;
+  font-family: 'Abel', sans-serif;
   font-size: 18px;
   color: var(--white);
 }
@@ -19,7 +19,7 @@
 html {
   background: var(--black);
 
-  font-family: sans-serif;
+  font-family: 'Abel', sans-serif;
   font-size: 18px;
   color: var(--white);
 
@@ -134,7 +134,7 @@ footer {
 }
 
 /* insta feed */
-.eapps-instagram-feed-header {
+/* .eapps-instagram-feed-header {
   background: transparent !important;
 }
 
@@ -152,4 +152,4 @@ footer {
   height: 75px;
 
   background: var(--black);
-}
+} */

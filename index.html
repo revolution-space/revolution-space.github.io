@@ -13,12 +13,15 @@
   <title>Revolution Space</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./Player.css">
+
   <!-- i know you -->
 </head>
 <body>
 
-<header class="Section Intro" onclick="$('.InstaWidget').scrollIntoView({ behavior: 'smooth' })">
+<header class="Section Intro">
   <img src="./assets/r2-logo.white.pad.png" alt="">
   <video autoplay loop muted playsinline class="video-background">
     <source src="./assets/R-smoke.1.mov.mp4" type="video/mp4">
@@ -81,6 +84,8 @@
   See you on the stage 🥰
 </footer>
 
+<script src="util.js"></script>
+<script src="Player.js"></script>
 <script>
 function $ (selector) { return document.querySelector(selector); }
 
@@ -124,6 +129,17 @@ $copyables.forEach($el => $el.addEventListener('click', e => {
   copyToClipboard($el.textContent);
   playCopyAnimation();
 }));
+
+window.Player = new Player({
+  $parent: $('.Intro'),
+});
+
+let _scrolledFromIntro = false;
+$('.Intro').on('click', e => {
+  if (_scrolledFromIntro) return;
+  _scrolledFromIntro = true;
+  $('.InstaWidget').scrollIntoView({ behavior: 'smooth' })
+});
 
 </script>
 
