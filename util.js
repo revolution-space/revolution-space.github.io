@@ -85,9 +85,8 @@ function bindPreventAll (cb = noop) {
 
 // --- shortcuts
 function l (...args) { return console.log(...args) }
-Object.prototype.on = HTMLElement.prototype.addEventListener;
-Object.prototype.off = HTMLElement.prototype.removeEventListener;
-Object.prototype.keys = function keys () { return Object.keys(this) };
+HTMLElement.prototype.on = HTMLElement.prototype.addEventListener; Window.prototype.on = Window.prototype.addEventListener;
+HTMLElement.prototype.off = HTMLElement.prototype.removeEventListener; Window.prototype.off = Window.prototype.removeEventListener;
 function add (a, b) { return a + b }
 function isFunc (d) { d instanceof Function ? d : null; }
 function join (arr, str='\n') { return arr.join(str) }

@@ -27,10 +27,15 @@
 <body>
 
 <header class="Section Intro">
-  <img src="./assets/r2-logo.white.pad.png" alt="">
+  <div class="__bg"></div>
+  <img src="./assets/r2-logo.white.pad.png" alt="" class="__logo">
   <video autoplay loop muted playsinline class="video-background">
     <source src="./assets/R-smoke.1.mov.mp4" type="video/mp4">
   </video>
+  <a href="https://www.youtube.com/@RadioRevolution1312" class="__yt" target="_blank" alt="revolution youtube channel">
+    <img src="https://www.gstatic.com/youtube/img/branding/youtubelogo/svg/youtubelogo.svg" alt="revolution youtube channel">
+  </a>
+  <div class="__overlay"></div>
 </header>
 <!-- peow! -->
 <!-- peow! -->
@@ -51,7 +56,10 @@
       <b>Bank of Georgia:</b><br><span class="Copyable">GE62BG0000000533463319</span> <span class="Copyable">Vlad Pavlov</span>
     </li>
     <li>
-      <a class="a-hue-color-anim" href="https://www.patreon.com/RevolutionSpace">patreon.com/RevolutionSpace</a>
+      <b>TBC bank:</b><br><span class="Copyable">GE37TB7703445064400004</span> <span class="Copyable">Oleg Goidenko</span>
+    </li>
+    <li>
+      <a href="https://www.patreon.com/RevolutionSpace">patreon.com/RevolutionSpace</a>
     </li>
     <li>
       <b>BTC:</b><br><span class="Copyable">bc1qmatqk4hzr4vy98p5q6gkgvlawyycwsr80pwlpn</span>
@@ -83,8 +91,10 @@
 <!-- peow! -->
 <!-- peow! -->
 <!-- peow! -->
-<footer class="Section Content">
-  See you on the stage 🥰
+<footer class="Section Footer">
+  <div class="Content">
+    See you on the stage 🥰
+  </div>
 </footer>
 
 <script src="util.js"></script>
@@ -139,7 +149,7 @@ window.Player = new Player({
 });
 
 let _scrolledFromIntro = false;
-$('.Intro').on('click', e => {
+$('.Intro .__overlay').on('click', e => {
   if (_scrolledFromIntro) return;
   _scrolledFromIntro = true;
   $('.InstaWidget').scrollIntoView({ behavior: 'smooth' })
