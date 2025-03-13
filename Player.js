@@ -11,8 +11,14 @@ const _gtag = window.gtag;
 const GTAG_OFF = localStorage['GTAG_OFF'];
 function gtag (...args) {
   console.log('gtag :>> ', ...args);
-  if (!GTAG_OFF)
+  if (!GTAG_OFF) {
+    if (typeof args[2] == 'string' )
+      args[2] = { event_label: args[2] };
     _gtag(...args);
+  }
+}
+function gEv (evName, payload) {
+  gtag('event', evName, payload);
 }
 // function gEv (cb, name, opts) {
 //   return function (...args) {
@@ -211,12 +217,12 @@ class Player {
       this.playing = !this.playing;
     else this.playing = state;
 
-    gtag('event', 'setPlaying', this.playing);
+    gEv('player', { playing: this.playing });
 
     if (this.playing) {
       const _gtagListening = () => {
         if (this.playing)
-          gtag('event', 'playing');
+          gEv('player', { playing: this.playing });
       }
       clearInterval(this._gtagListeningInterval);
       this._gtagListeningInterval = setInterval(_gtagListening, 60e3);
