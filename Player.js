@@ -7,18 +7,18 @@ window.addEventListener('load', () => {
     document.body.classList.add('--mobile');
 });
 
-const _gtag = window.gtag;
+// const _gtag = window.gtag;
 const GTAG_OFF = localStorage['GTAG_OFF'];
-function gtag (...args) {
+function _gtag (...args) {
   console.log('gtag :>> ', ...args);
   if (!GTAG_OFF) {
     if (typeof args[2] == 'string' )
       args[2] = { event_label: args[2] };
-    _gtag(...args);
+    gtag(...args);
   }
 }
 function gEv (evName, payload) {
-  gtag('event', evName, payload);
+  _gtag('event', evName, payload);
 }
 // function gEv (cb, name, opts) {
 //   return function (...args) {
@@ -217,7 +217,7 @@ class Player {
       this.playing = !this.playing;
     else this.playing = state;
 
-    gEv('player', { playing: this.playing });
+    gEv('player', { setPlaying: this.playing });
 
     if (this.playing) {
       const _gtagListening = () => {

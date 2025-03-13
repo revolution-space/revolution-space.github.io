@@ -49,6 +49,10 @@ p + .DonutList,
 .Content {
   max-width: 800px;
   padding: var(--page-pad-v);
+
+  min-width: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .Intro {
