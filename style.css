@@ -118,6 +118,10 @@ p + .DonutList,
     mix-blend-mode: hard-light;
   }
 
+.About {
+  white-space: break-spaces;
+}
+
 .Copyable,
 .CopyableHelp {
   border-bottom: 1px dotted white;
