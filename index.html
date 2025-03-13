@@ -126,6 +126,7 @@ function playCopyAnimation () {
 
 const $copyables = [ ...document.querySelectorAll('.Copyable') ];
 $copyables.forEach($el => $el.addEventListener('click', e => {
+  gtag('event', 'copy', $el.textContent);
   copyToClipboard($el.textContent);
   playCopyAnimation();
 }));

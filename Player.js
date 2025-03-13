@@ -7,6 +7,13 @@ window.addEventListener('load', () => {
     document.body.classList.add('--mobile');
 });
 
+const _gtag = window.gtag;
+const GTAG_OFF = localStorage['GTAG_OFF'];
+function gtag (...args) {
+  console.log('gtag :>> ', ...args);
+  if (!GTAG_OFF)
+    _gtag(...args);
+}
 // function gEv (cb, name, opts) {
 //   return function (...args) {
 //     gtag('event', name, opts);
@@ -198,7 +205,7 @@ class Player {
     // }
   }
 
-  gtagListeningInterval = -1;
+  _gtagListeningInterval = -1;
   setPlaying (state) {
     if (state === TOGGLE)
       this.playing = !this.playing;
@@ -207,15 +214,16 @@ class Player {
     gtag('event', 'setPlaying', this.playing);
 
     if (this.playing) {
-      function _gtagListening () {
+      const _gtagListening = () => {
         if (this.playing)
           gtag('event', 'playing');
       }
-      this.gtagListeningInterval = setInterval(gtagListening, 6e3);
-      gtagListening();
+      clearInterval(this._gtagListeningInterval);
+      this._gtagListeningInterval = setInterval(_gtagListening, 60e3);
+      _gtagListening();
     }
     else
-      clearInterval(this.gtagListeningInterval);
+      clearInterval(this._gtagListeningInterval);
 
     if (this.playing) {
       if (IOS && !this.played) { // fix currentTime bug IOS
