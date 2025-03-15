@@ -44,7 +44,6 @@
 <!-- peow! -->
 
 <section class="InstaWidget">
-  <!-- Elfsight Instagram Feed | Untitled Instagram Feed -->
   <script src="https://static.elfsight.com/platform/platform.js" async></script>
   <div class="elfsight-app-39d05746-91ff-4c41-b35d-edfe63f065bb" data-elfsight-app-lazy>
     <div class="Content">...Loading events...</div>
@@ -161,7 +160,7 @@ function playCopyAnimation () {
 
 const $copyables = [ ...document.querySelectorAll('.Copyable') ];
 $copyables.forEach($el => $el.addEventListener('click', e => {
-  gEv('copy', { txt: $el.textContent });
+  gEv('Donut_copy', { cat: 'Donut', txt: $el.textContent });
   copyToClipboard($el.textContent);
   playCopyAnimation();
 }));

@@ -85,8 +85,7 @@ function bindPreventAll (cb = noop) {
 
 // --- shortcuts
 function l (...args) { return console.log(...args) }
-HTMLElement.prototype.on = HTMLElement.prototype.addEventListener; Window.prototype.on = Window.prototype.addEventListener;
-HTMLElement.prototype.off = HTMLElement.prototype.removeEventListener; Window.prototype.off = Window.prototype.removeEventListener;
+{ const hp = HTMLElement.prototype; const wp = Window.prototype; wp.on = hp.on = hp.addEventListener; wp.off = hp.off = hp.removeEventListener; }
 function add (a, b) { return a + b }
 function isFunc (d) { d instanceof Function ? d : null; }
 function join (arr, str='\n') { return arr.join(str) }
@@ -114,9 +113,7 @@ function range (start, end, step = 1) {
 // l(range(2, 4, .3))
 
 const _Array_slice = Array.prototype.slice;
-Array.prototype.slice = function slice (r0 = 0, r1 = this.length) {
-  return _Array_slice.call(this, r0 < 0 ? this.length + r0 : r0, r1 < 0 ? this.length + r1 : r1);
-}
+Array.prototype.slice = function slice (r0 = 0, r1 = this.length) { return _Array_slice.call(this, r0 < 0 ? this.length + r0 : r0, r1 < 0 ? this.length + r1 : r1); }
 // l([0,1,2,3,4,5,6,7].slice(-5, -1))
 
 function* gen (filler, limit = 1000) {
@@ -230,6 +227,7 @@ function nlc (arr) { return copy(join(arr)) }
 // let $$histLink = $$('[aria-label="Chat history"] a'+clAtt`flex items-center gap-2 p-2`);
 
 // --- promises
+
 function t (a, b) {
   const aIsFn = a instanceof Function;
   let time = 1e3;

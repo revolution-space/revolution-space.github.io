@@ -17,13 +17,21 @@ function _gtag (...args) {
     gtag(...args);
   }
 }
-function gEv (evName, payload) {
+
+function gEv (evName, _payload) {
+  const { cat, label, ...payload } = _payload;
+  if (cat) payload.event_category = cat;
+  if (label) payload.event_label = label;
+
   _gtag('event', evName, payload);
 }
-// function gEv (cb, name, opts) {
-//   return function (...args) {
-//     gtag('event', name, opts);
-//     return cb(...args);
+
+// function gEvWrap (evName, ) {
+//   return function (fn) {
+//     return function (...args) {
+//       gEv(evName, {});
+//       return fn(...args);
+//     }
 //   }
 // }
 
@@ -91,14 +99,23 @@ class PlayerUI {
       [
         El('span', { style: { marginRight: '1em' } }, "Listen to all our Tuesdays jams!"),
 
-        btn('playback', () => { this.player.setPlaying(TOGGLE) }),
+        btn('playback', () => {
+          this.player.setPlaying(TOGGLE);
+          gEv(this.player.playing ? 'P_play' : 'P_pause', { cat: 'Player' });
+        }),
 
         btn('rewind-forward', null, {
           // title: `Rewind backward\nShortcuts: [>], [shift + >] next chapter \n[LONG TAP] to repeat rewind`,
           accessKey: '.',
           ...btnHoldRepeatEvents(
-            () => this.player.playRandom(),
-            () => this.player.rewindTime(1)
+            () => {
+              gEv('P_random', { cat: 'Player' });
+              this.player.playRandom();
+            },
+            () => {
+              gEv('P_rewind', { cat: 'Player' });
+              this.player.rewindTime(1);
+            }
           ),
         }),
       ])
@@ -217,19 +234,14 @@ class Player {
       this.playing = !this.playing;
     else this.playing = state;
 
-    gEv('player', { setPlaying: this.playing });
-
+    clearInterval(this._gtagListeningInterval);
     if (this.playing) {
       const _gtagListening = () => {
         if (this.playing)
-          gEv('player', { playing: this.playing });
+          gEv('P_playing:1m', { cat: 'Player' });
       }
-      clearInterval(this._gtagListeningInterval);
       this._gtagListeningInterval = setInterval(_gtagListening, 60e3);
-      _gtagListening();
     }
-    else
-      clearInterval(this._gtagListeningInterval);
 
     if (this.playing) {
       if (IOS && !this.played) { // fix currentTime bug IOS
