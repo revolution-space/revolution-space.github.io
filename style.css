@@ -34,6 +34,12 @@ body {
   overflow-x: hidden;
 }
 
+.Donut {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 p + p,
 p + .DonutList,
 .DonutList + p {
